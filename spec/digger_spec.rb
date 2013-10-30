@@ -29,23 +29,23 @@ describe Digger do
   end
 
   describe "returns a collection" do
-    it "returns a hash when applicable" do
+    it "of a hash when applicable" do
       data = [2, {frog: :green}, 3]
       expect(Digger.dig_chain(data, 1)).to eq frog: :green
     end
 
-    it "returns an array when applicable" do
+    it "of an array when applicable" do
       data = {bagels: [:salt, :plain, :garlic, :everything]}
       expect(Digger.dig_chain(data, :bagels)).to eq [:salt, :plain, :garlic, :everything]
     end
 
-    it "returns a hash-array combo when applicable" do
+    it "of a hash-array combo when applicable" do
       data = [{spices: [:salt, :pepper, :tumeric]}]
       expect(Digger.dig_chain(data, 0)).to eq spices: [:salt, :pepper, :tumeric]
     end
   end
 
-  describe "returns default values" do
+  describe "default values" do
     it "returns block result for a bad array index" do
       data = [1]
       expect(Digger.dig_chain(data, 2) {2+3+5}).to eq 10
